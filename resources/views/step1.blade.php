@@ -85,7 +85,7 @@
             </label>
         </div>
 
-        <button class="btn btn-blue w-100 mt-3 mb-5">Continue</button>
+        <a href="{{ route('roadside.location') }}" class="btn btn-blue w-100 mt-3 mb-5">Continue</a>
     </div>
 </div>
 

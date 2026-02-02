@@ -12,7 +12,7 @@
         <div class="overlay-title">Where is your vehicle located?</div>
         <div class="overlay-sub">Provide your exact location</div>
 
-        <form id="locationForm" method="POST" action="">
+        <form id="locationForm" method="POST" action="{{ route('roadside.location.submit') }}">
             @csrf
 
             <!-- Visible only in manual mode -->
@@ -33,7 +33,7 @@
                 </button>
 
                 <button type="button" class="btn btn-link w-100 mt-2 fw-bold" onclick="toggleManual(false)">
-                    Back
+                    Back To Share Exact Location
                 </button>
             </div>
 
@@ -45,7 +45,7 @@
 
                 <div class="my-2 fw-bold text-secondary">Or</div>
 
-                <button type="button" class="btn btn-outline-darkpill w-100" onclick="toggleManual(true)">
+                <button type="button" class="btn btn-blue btn-pill w-100" onclick="toggleManual(true)">
                     Type Address Manually
                 </button>
             </div>
@@ -63,7 +63,7 @@
         </form>
 
         <div class="mt-3">
-            <a class="text-decoration-none fw-bold" href="">← Back</a>
+            <a class="text-decoration-none fw-bold loaction-back-button" href="{{ route('home') }}">← Back</a>
         </div>
     </div>
 </div>

@@ -20,7 +20,7 @@
     <div class="container px-3">
         <a class="navbar-brand d-flex align-items-center gap-2 brand-link" href="#">
             <img class="brand-logo" src="/images/logo.png">
-            <span class="brand-title">TowNow</span>
+            <h1 class="brand-title">Tow Now</h1>
         </a>
         <a class="btn btn-soft-phone ms-auto" href="tel:8333869669">833-386-9669</a>
     </div>
@@ -31,5 +31,6 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+@stack('scripts')
 </body>
 </html>
