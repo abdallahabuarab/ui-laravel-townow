@@ -19,3 +19,15 @@ Route::post('/roadside/location', function (Request $request) {
     session(['roadside_location' => $request->all()]);
     return redirect()->route('roadside.location')->with('success', 'Location saved');
 })->name('roadside.location.submit');
+Route::get('/roadside/confirm', function () {
+    return view('step3');
+});
+Route::get('/roadside/customer', function () {
+    return view('step4');
+});
+Route::get('/roadside/provider-request', function () {
+    return view('step5');
+});
+Route::get('/roadside/destination-vehicle', function () {
+    return view('step6');
+});
