@@ -61,7 +61,7 @@
 
     <div class="mt-5" style="max-width:680px;margin:0 auto;">
         <div class="d-flex justify-content-between mb-2">
-            <div style="font-weight:900">Select Class</div>
+            <h5 class="fw-bold">Select Class</h5>
             {{-- <div class="text-secondary">Light / Medium</div> --}}
         </div>
 

@@ -1,24 +1,24 @@
 @extends('layouts.roadside')
 
 @section('content')
-<div class="page-wrap">
-    <div class="card soft-card p-4 p-md-5">
+<div class="container my-4">
+    <div class="card request-details-card p-4 p-md-5">
 
         <div class="mb-3">
-            <h2 class="page-title h4 mb-1">Enter Destination & Vehicle Details</h2>
-            <div class="page-sub">
+            <h3 class="mb-1 request-details-title">Enter Destination & Vehicle Details</h3>
+            <h5 class="text-secondary">
                 Fill in the details below to continue your request.
-            </div>
+            </h5>
         </div>
 
         <form id="destinationVehicleForm">
 
             <div class="mt-3">
-                <div class="section-title mb-2">Destination Information</div>
+                <h5 class="section-title mb-2">Destination Information</h5>
 
                 <div class="mt-3">
-                    <label class="label">Location Description</label>
-                    <select id="destinationLocationType" class="form-control field">
+                    <label class="fw-bold">Location Description <span class="text-danger">*</span></label>
+                    <select id="destinationLocationType" class="form-control selector">
                         <option data-type="street">Street</option>
                         <option data-type="parking lot">Parking Lot</option>
                         <option data-type="repair facility">Repair Facility</option>
@@ -27,13 +27,13 @@
                     </select>
                 </div>
 
-                <div class="mt-3" id="businessNameGroup" style="display:none;">
-                    <label class="label">Business Name</label>
+                <div class="mt-3" id="businessNameGroup">
+                    <label class="fw-bold">Business Name</label>
                     <input type="text" class="form-control field" placeholder="Example Auto Repair">
                 </div>
 
                 <div class="mt-3">
-                    <label class="label">Destination Address</label>
+                    <label class="fw-bold">Destination Address <span class="text-danger">*</span></label>
                     <input type="text"
                            id="destination_autocomplete"
                            class="form-control field"
@@ -48,43 +48,45 @@
             </div>
 
             <div class="mt-4">
-                <div class="section-title">Vehicle Information</div>
+                <h5 class="section-title mb-2">Vehicle Information</h5>
 
-                <div class="row g-3">
-                    <div class="col-12 col-md-4">
-                        <label class="label">Vehicle Year</label>
+                <div class="row g-3 mt-3">
+                    <div class="col-12 col-md-3">
+                        <label class="fw-bold">Vehicle Year <span class="text-danger">*</span></label>
                         <input type="number" class="form-control field" value="2020">
                     </div>
 
-                    <div class="col-12 col-md-4">
-                        <label class="label">Vehicle Make</label>
+                    <div class="col-12 col-md-3">
+                        <label class="fw-bold">Vehicle Make <span class="text-danger">*</span></label>
                         <input type="text" class="form-control field" value="Toyota">
                     </div>
 
-                    <div class="col-12 col-md-4">
-                        <label class="label">Vehicle Model</label>
+                    <div class="col-12 col-md-3">
+                        <label class="fw-bold">Vehicle Model <span class="text-danger">*</span></label>
                         <input type="text" class="form-control field" value="Camry">
                     </div>
 
+                    <div class="col-12 col-md-3">
+                        <label class="fw-bold">License Plate Number <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control field" value="7ABC123">
+                    </div>
+
                     <div class="col-12 col-md-4">
-                        <label class="label">Vehicle Color</label>
+                        <label class="fw-bold">Vehicle Color</label>
                         <input type="text" class="form-control field" value="Black">
                     </div>
 
                     <div class="col-12 col-md-4">
-                        <label class="label">Vehicle Style</label>
+                        <label class="fw-bold">Vehicle Style</label>
                         <input type="text" class="form-control field" value="Sedan">
                     </div>
 
                     <div class="col-12 col-md-4">
-                        <label class="label">VIN</label>
+                        <label class="fw-bold">VIN</label>
                         <input type="text" class="form-control field" value="1HGCM82633A004352">
                     </div>
 
-                    <div class="col-12 col-md-6">
-                        <label class="label">License Plate Number</label>
-                        <input type="text" class="form-control field" value="7ABC123">
-                    </div>
+                    
                 </div>
             </div>
 
@@ -103,7 +105,20 @@
 @endsection
 
 @section('scripts')
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
+
+$(document).ready(function() {
+    $('.destination-select').select2({
+        theme: 'bootstrap-5',
+        placeholder: 'Select communication methods',
+        allowClear: true,
+        closeOnSelect: false
+    });
+});
+
 const locationTypeSelect = document.getElementById('destinationLocationType')
 const businessNameGroup = document.getElementById('businessNameGroup')
 const triggerTypes = ['parking lot','repair facility','dealership','storage lot']

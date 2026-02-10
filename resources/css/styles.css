@@ -246,6 +246,67 @@
     color: white;
 }
 
+.request-details-card{
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px #0000006b;
+}
+
+.request-details-title, .customer-info-title{
+    color: var(--brand-dark);
+    font-weight: 500;
+}
+
+.selected-request-details-text{
+    font-size: 18px;
+}
+
+.request-details-inner-card{
+    background:rgba(241,245,249,.75);
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select{
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    background:rgba(241,245,249,.75);
+}
+
+.selector{
+    background:rgba(241,245,249,.75);
+    background-image: url(../images/down-arrow.svg);
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.select2-container--bootstrap-5 .select2-selection{
+    background-color:rgba(241,245,249,.75) !important;
+    background-image: url(../images/down-arrow.svg);
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-position: right 30px center;
+    border-radius: 8px !important;
+    border: 1px solid rgba(15, 23, 42, 0.18) !important;
+    padding: 10px 14px !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-search .select2-search__field{
+    cursor: pointer;
+}
+
+.select2-container{
+    width: 100% !important;
+}
+
+.select2-container--open{
+    width: 100% !important;
+}
+
+.section-title{
+    color: #cc5500;
+}
+
 
 @media (max-width: 767px) {
     .tile-grid {
@@ -254,5 +315,10 @@
 
     .service-tile{
         min-height: 175px;
+    }
+
+    .btn-soft-phone{
+        padding: 8px;
+        font-size: 15px;
     }
 }

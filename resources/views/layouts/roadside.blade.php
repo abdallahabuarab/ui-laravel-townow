@@ -20,7 +20,7 @@
     <div class="container px-3">
         <a class="navbar-brand d-flex align-items-center gap-2 brand-link" href="#">
             <img class="brand-logo" src="/images/logo.png">
-            <h1 class="brand-title">Tow Now</h1>
+            <h1 class="brand-title m-0">Tow Now</h1>
         </a>
         <a class="btn btn-soft-phone ms-auto" href="tel:8333869669">833-386-9669</a>
     </div>
