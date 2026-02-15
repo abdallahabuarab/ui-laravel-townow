@@ -13,6 +13,8 @@
     --bg: #f5f7fb;
     --card: #ffffff;
     --ring: rgba(14, 165, 233, 0.35);
+    --danger: #ef4232;
+    --ok: #16a34a;
 }
 
 /* html, body {
@@ -321,4 +323,161 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
         padding: 8px;
         font-size: 15px;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Page */
+.page-wrap{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+}
+
+/* Card */
+.soft-card{
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 18px 50px rgba(2, 8, 23, 0.10);
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(10px);
+}
+
+/* Header row inside card */
+
+.subtitle{
+    color: var(--muted);
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Chips */
+.chip{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: .45rem .75rem;
+    font-weight: 800;
+    background: rgba(14,165,233,.10);
+    border: 1px solid rgba(14,165,233,.18);
+    color: var(--brand-dark);
+    white-space: nowrap;
+}
+.chip small{ font-weight: 800; opacity: .9; }
+
+/* Sections */
+.section{
+    border-top: 1px solid rgba(15,23,42,.08);
+    padding-top: 16px;
+    margin-top: 16px;
+}
+.section h6{
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: .82rem;
+    color: var(--brand-dark);
+    margin-bottom: 10px;
+}
+
+.kv{ margin: 0; padding: 0; list-style: none; }
+.kv li{
+    margin: .25rem 0;
+    color: rgba(15,23,42,.88);
+    font-weight: 600;
+}
+.kv strong{ font-weight: 900; color: rgba(15,23,42,.92); }
+
+/* Summary line */
+.summary{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--muted);
+    font-weight: 700;
+    margin-top: 6px;
+}
+.summary .sep{ opacity: .45; }
+
+/* Offer blocks */
+.pill{
+    background: rgba(241,245,249,.75);
+    border: 1px solid rgba(15,23,42,.08);
+    border-radius: 16px;
+    padding: 14px 14px;
+    height: 100%;
+}
+.pill .k{ font-weight: 900; margin-bottom: 6px; color: rgba(15,23,42,.92); }
+.pill .v{ color: var(--muted); font-weight: 700; }
+.pill .small{ color: rgba(15,23,42,.78); font-weight: 700; }
+
+.pill-success{
+    background: rgba(22,163,74,.08);
+    border-color: rgba(22,163,74,.18);
+}
+
+/* Inputs */
+select, input[type="text"], input[type="number"]{
+    width:100%;
+    padding: 12px 14px;
+    margin-top: 6px;
+    border-radius: 14px;
+    border: 1px solid rgba(15,23,42,.12);
+    font-size: 1rem;
+    color: #111827;
+    background: rgba(241,245,249,.75);
+    box-shadow: none !important;
+    outline: none;
+}
+select:focus, input[type="text"]:focus, input[type="number"]:focus{
+    background: rgba(241,245,249,.92);
+    border-color: rgba(14,165,233,.45);
+    box-shadow: 0 0 0 4px var(--ring) !important;
+}
+
+/* Buttons */
+.btn-accept{
+    background: var(--brand);
+    border:none;
+    border-radius: 999px;
+    color:#fff;
+    padding: 12px;
+    font-weight: 800;
+}
+.btn-accept:hover{ filter: brightness(.98); transform: translateY(-1px); }
+
+.btn-reject{
+    background: var(--danger);
+    border-radius: 999px;
+    color: white;
+    padding: 12px 2px;
+    text-decoration:none;
+    font-weight: 900;
+}
+.btn-reject:hover{ background: #940e02; }
+
+.hidden{ display:none; }
+
+/* Responsive tweaks */
+@media (max-width: 575px){
+    .page-wrap{ padding: 14px 12px 34px; }
+    .soft-card{ padding: 18px !important; }
+    .chip{ width: 100%; justify-content: center; }
 }

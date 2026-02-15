@@ -1,269 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Request Details</title>
+@extends('layouts.roadside')
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+@section('content')
 
-  <!-- Better font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --brand: #0ea5e9;
-      --brand-2: #38bdf8;
-      --ink: #0f172a;
-      --muted: rgba(15, 23, 42, .72);
-      --brand-dark: #2d3663;
-      --bg: #f5f7fb;
-      --ring: rgba(14,165,233,.35);
-      --danger: #ef4232;
-      --ok: #16a34a;
-    }
 
-    body{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(900px 420px at 50% -20%, rgba(14,165,233,.16), transparent 60%) , var(--bg);
-      color: var(--ink);
-    }
 
-    /* ===== Header ===== */
-    .topbar{
-      background:#fff;
-      box-shadow: 0 2px 14px rgba(2, 8, 23, 0.06);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .brand-link{ text-decoration:none; }
-    .brand-logo{ width: 34px; height: 34px; object-fit: contain; }
-    .brand-title{ color: var(--brand-dark); font-weight: 900; letter-spacing:.2px; }
 
-    .btn-soft-phone{
-      background: rgba(14,165,233,.10);
-      border: 1px solid rgba(14,165,233,.18);
-      color: var(--brand-dark);
-      border-radius: 999px;
-      padding: 10px 14px;
-      transition: transform .12s ease, box-shadow .12s ease;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-    }
-    .btn-soft-phone:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(14,165,233,.14);
-    }
-
-    /* Page */
-    .page-wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 20px 16px 40px;
-    }
-
-    /* Card */
-    .soft-card{
-      border: 0;
-      border-radius: 18px;
-      box-shadow: 0 18px 50px rgba(2, 8, 23, 0.10);
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(10px);
-    }
-
-    /* Header row inside card */
-    .title{
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin: 0;
-      color: var(--brand-dark);
-      line-height: 1.15;
-    }
-    .subtitle{
-      color: var(--muted);
-      font-weight: 600;
-      margin: 0;
-    }
-
-    /* Chips */
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: .45rem .75rem;
-      font-weight: 800;
-      background: rgba(14,165,233,.10);
-      border: 1px solid rgba(14,165,233,.18);
-      color: var(--brand-dark);
-      white-space: nowrap;
-    }
-    .chip small{ font-weight: 800; opacity: .9; }
-
-    /* Sections */
-    .section{
-      border-top: 1px solid rgba(15,23,42,.08);
-      padding-top: 16px;
-      margin-top: 16px;
-    }
-    .section h6{
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-weight: 900;
-      font-size: .82rem;
-      color: var(--brand-dark);
-      margin-bottom: 10px;
-    }
-
-    .kv{ margin: 0; padding: 0; list-style: none; }
-    .kv li{
-      margin: .25rem 0;
-      color: rgba(15,23,42,.88);
-      font-weight: 600;
-    }
-    .kv strong{ font-weight: 900; color: rgba(15,23,42,.92); }
-
-    /* Summary line */
-    .summary{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      color: var(--muted);
-      font-weight: 700;
-      margin-top: 6px;
-    }
-    .summary .sep{ opacity: .45; }
-
-    /* Offer blocks */
-    .pill{
-      background: rgba(241,245,249,.75);
-      border: 1px solid rgba(15,23,42,.08);
-      border-radius: 16px;
-      padding: 14px 14px;
-      height: 100%;
-    }
-    .pill .k{ font-weight: 900; margin-bottom: 6px; color: rgba(15,23,42,.92); }
-    .pill .v{ color: var(--muted); font-weight: 700; }
-    .pill .small{ color: rgba(15,23,42,.78); font-weight: 700; }
-
-    .pill-success{
-      background: rgba(22,163,74,.08);
-      border-color: rgba(22,163,74,.18);
-    }
-
-    /* Inputs */
-    select, input[type="text"], input[type="number"]{
-      width:100%;
-      padding: 12px 14px;
-      margin-top: 6px;
-      border-radius: 14px;
-      border: 1px solid rgba(15,23,42,.12);
-      font-size: 1rem;
-      color: #111827;
-      background: rgba(241,245,249,.75);
-      box-shadow: none !important;
-      outline: none;
-    }
-    select:focus, input[type="text"]:focus, input[type="number"]:focus{
-      background: rgba(241,245,249,.92);
-      border-color: rgba(14,165,233,.45);
-      box-shadow: 0 0 0 4px var(--ring) !important;
-    }
-
-    /* Buttons */
-    .btn-accept{
-      background: var(--brand);
-      border:none;
-      border-radius: 999px;
-      transition: all .12s ease;
-      color:#fff;
-      padding: 12px 18px;
-      font-weight: 900;
-      box-shadow: 0 14px 30px rgba(14,165,233,.22);
-    }
-    .btn-accept:hover{ filter: brightness(.98); transform: translateY(-1px); }
-
-    .btn-reject{
-      background: transparent;
-      border: none;
-      color: var(--danger);
-      padding: 12px 2px;
-      text-decoration:none;
-      font-weight: 900;
-    }
-    .btn-reject:hover{ color: #c92f22; }
-
-    .hidden{ display:none; }
-
-    /* Responsive tweaks */
-    @media (max-width: 575px){
-      .page-wrap{ padding: 14px 12px 34px; }
-      .soft-card{ padding: 18px !important; }
-      .chip{ width: 100%; justify-content: center; }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Header (no backend) -->
-  <nav class="navbar navbar-expand-md topbar py-2">
-    <div class="container-fluid px-3">
-
-      <!-- Burger (mobile) -->
-      <button class="navbar-toggler border-0 shadow-none" type="button"
-              data-bs-toggle="collapse" data-bs-target="#topNav"
-              aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Center brand -->
-      <a class="navbar-brand mx-auto d-flex align-items-center gap-2 brand-link" href="#">
-        <img class="brand-logo" src="https://via.placeholder.com/34x34.png?text=T" alt="TowNow logo">
-        <span class="brand-title">TowNow</span>
-      </a>
-
-      <!-- Desktop phone -->
-      <div class="d-none d-md-flex align-items-center">
-        <a class="btn-soft-phone" href="tel:8333869669" aria-label="Call TowNow">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6.5 3.5l3 1.2c.7.3 1.1 1 .9 1.7l-.8 2.5c-.2.6 0 1.3.5 1.7l2 1.7c.5.4 1.2.5 1.8.2l2.4-1.1c.7-.3 1.5 0 1.9.6l1.6 2.6c.4.7.3 1.6-.4 2.1-1.3 1-2.9 1.5-4.6 1.5-7.2 0-13-5.8-13-13 0-1.7.5-3.3 1.5-4.6.5-.7 1.4-.8 2.1-.4Z"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="fw-bold">833-386-9669</span>
-        </a>
-      </div>
-
-      <div class="collapse navbar-collapse" id="topNav">
-        <ul class="navbar-nav ms-auto mt-3 mt-md-0 align-items-md-center gap-md-2">
-          <!-- Mobile phone -->
-          <li class="nav-item d-md-none">
-            <a class="nav-link fw-bold" href="tel:8333869669">833-386-9669</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-bold" href="#">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-bold" href="#">Log in</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </nav>
-
-  <div class="page-wrap">
-    <div class="card soft-card p-4 p-md-5">
+  <div class="container my-4">
+    <div class="card request-details-card p-4 p-md-5">
 
       <!-- Title + timer -->
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
         <div>
-          <h4 class="title">Request Details for <span id="providerName">Premium Roadside</span></h4>
+          <h3 class="customer-info-title">Request Details for <span id="providerName">Premium Roadside</span></h3>
           <p class="subtitle mt-2">Review the request and respond before it expires.</p>
 
           <div class="summary mt-3">
@@ -377,8 +126,8 @@
         <!-- No backend form, just UI behavior -->
         <form class="mt-3" onsubmit="return false;">
           <div class="d-flex flex-column flex-sm-row justify-content-between align-items-stretch gap-2">
-            <button type="button" id="acceptBtn" class="btn-accept w-100 w-sm-auto">Accept</button>
-            <button type="button" id="rejectBtn" class="btn-reject w-100 w-sm-auto text-center">Reject</button>
+            <button type="button" id="acceptBtn" class="btn btn-blue btn-pill w-100 mt-0 mt-md-2">Accept</button>
+            <button type="button" id="rejectBtn" class="btn-reject btn-pill w-100 mt-0 mt-md-2">Reject</button>
           </div>
 
           <!-- Accept (ETA) -->
@@ -387,7 +136,7 @@
             <select id="eta"></select>
 
             <div class="mt-3">
-              <button type="button" id="confirmAccept" class="btn-accept w-100">
+              <button type="button" id="confirmAccept" class="btn btn-blue btn-pill w-100 mt-0 mt-md-2">
                 Confirm Accept
               </button>
             </div>
@@ -403,7 +152,7 @@
             </select>
 
             <div class="mt-3">
-              <button type="button" id="confirmReject" class="btn-reject w-100 text-center">
+              <button type="button" id="confirmReject" class="btn-reject btn-pill w-100 mt-0 mt-md-2">
                 Submit Rejection
               </button>
             </div>
@@ -595,5 +344,5 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-</body>
-</html>
+
+@endsection
