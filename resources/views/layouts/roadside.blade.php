@@ -22,9 +22,36 @@
             <img class="brand-logo" src="/images/logo.png">
             <h1 class="brand-title m-0">Tow Now</h1>
         </a>
-        <a class="btn btn-soft-phone ms-auto" href="tel:8333869669">833-386-9669</a>
+        <a class="btn btn-soft-phone" href="tel:8333869669">833-386-9669</a>
+        <button class="border-0 ms-auto navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
 </nav>
+
+<!-- Sidebar Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sidebarMenuLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <main>
     @yield('content')
