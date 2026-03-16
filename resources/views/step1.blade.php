@@ -59,7 +59,7 @@
         </label>
     </div>
 
-    <div class="mt-5" style="max-width:680px;margin:0 auto;">
+    <div class="mt-2 mt-md-5" style="max-width:680px;margin:0 auto;">
         {{-- <div class="d-flex justify-content-between mb-2">
             <h5 class="fw-bold">Select Class</h5>
             <div class="text-secondary">Light / Medium</div>
@@ -85,7 +85,7 @@
             </label>
         </div> --}}
 
-        <a href="{{ route('roadside.location') }}" class="btn btn-blue w-100 mt-3 mb-5">Continue</a>
+        <a href="{{ route('roadside.location') }}" class="btn btn-blue w-100 mt-3 mb-0 mb-md-5">Continue</a>
     </div>
 </div>
 
