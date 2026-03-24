@@ -37,19 +37,20 @@
     </div>
     <div class="offcanvas-body">
         <ul class="navbar-nav">
-            <li class="nav-item">
+            <li class="ps-2 nav-item">
                 <a class="nav-link" href="#">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="ps-2 nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
-            <li class="nav-item">
+            <li class="ps-2 nav-item">
                 <a class="nav-link" href="#">Services</a>
             </li>
-            <li class="nav-item">
+            <li class="ps-2 nav-item">
                 <a class="nav-link" href="#">Contact</a>
             </li>
         </ul>
+        <a class="btn btn-soft-phone phone-number-canvas mt-3" href="tel:8333869669">833-386-9669</a>
     </div>
 </div>
 

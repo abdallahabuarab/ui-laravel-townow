@@ -321,6 +321,11 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
     .btn-soft-phone{
         padding: 8px;
         font-size: 15px;
+        display: none;
+    }
+
+    .phone-number-canvas{
+        display: inline-flex;
     }
 }
 
